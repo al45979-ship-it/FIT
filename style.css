@@ -1,0 +1,168 @@
+/* ==========================================================================
+   ESTILOS BASE - FITLIFE PREMIUM (RESPONSIVE FLEXBOX CHALLENGE)
+   ========================================================================== */
+
+:root {
+    --primary: #1a202c;
+    --accent: #3182ce;
+    --accent-hover: #2b6cb0;
+    --bg-main: #f7fafc;
+    --bg-card: #ffffff;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --border: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* 
+   ERROR INTENCIONAL REQUISITO 2:
+   Este contenedor principal debería distribuir el 'hero-panel', 'form-panel' y 'result-panel' 
+   de forma armoniosa usando Flexbox, permitiendo que bajen si no caben (flex-wrap).
+   Actualmente está en 'block', lo que rompe el diseño responsivo de columnas.
+*/
+.main-container {
+    display: block; /* MODIFICAR AQUÍ POR EL ALUMNO */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Paneles del sistema */
+.hero-panel {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%; /* Debe ocupar todo el ancho superior en flex */
+}
+
+.hero-panel h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero-panel .accent {
+    color: #63b3ed;
+}
+
+.status-badge {
+    display: inline-block;
+    background-color: #ecc94b;
+    color: #744210;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.form-panel, .result-panel {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    /* REQUISITO 2B: El alumno debe definir anchos flex adecuados para que se alineen lado a lado en pantallas grandes */
+    flex: 1 1 450px; 
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-group label, .checkbox-group label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    background-color: var(--accent);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Estilos de la tarjeta de resultados */
+.result-card {
+    background-color: #edf2f7;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.result-card p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 15px 0;
+}
+
+.total-payable {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2b6cb0;
+}
+
+.instructions-note {
+    color: var(--text-muted);
+    text-align: center;
+}
