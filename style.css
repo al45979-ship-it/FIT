@@ -1,15 +1,18 @@
 /* ==========================================================================
    ESTILOS BASE - FITLIFE PREMIUM (RESPONSIVE FLEXBOX CHALLENGE)
    ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root {
-    --primary: #1a202c;
-    --accent: #3182ce;
-    --accent-hover: #2b6cb0;
-    --bg-main: #f7fafc;
-    --bg-card: #ffffff;
-    --text-main: #2d3748;
-    --text-muted: #718096;
-    --border: #e2e8f0;
+    --ink: #0d1210;
+    --panel: #151b18;
+    --panel-raised: #1c2420;
+    --lime: #c6ff3a;
+    --lime-dim: #9bd62a;
+    --coral: #ff5d5d;
+    --text-main: #eef2ee;
+    --text-muted: #8b9990;
+    --border: #2a332d;
 }
 * {
     box-sizing: border-box;
@@ -17,18 +20,16 @@
     padding: 0;
 }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-main);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--ink);
+    background-image:
+        radial-gradient(circle at 15% 10%, rgba(198, 255, 58, 0.07), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 93, 93, 0.06), transparent 45%);
     color: var(--text-main);
     line-height: 1.6;
-    padding: 20px;
+    padding: 24px;
 }
-/* 
-   REQUISITO 2 (RESUELTO):
-   El contenedor principal ahora usa Flexbox para distribuir 'hero-panel',
-   'form-panel' y 'result-panel'. flex-wrap permite que los paneles bajen
-   de línea ordenadamente en pantallas móviles.
-*/
+
 .main-container {
     display: flex;
     flex-wrap: wrap;
@@ -36,114 +37,244 @@ body {
     margin: 0 auto;
     gap: 20px;
 }
-/* Paneles del sistema */
+
+/* --- Panel héroe: cartel de gimnasio --- */
 .hero-panel {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, #1a2119 0%, #0d1210 100%);
     color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    width: 100%; /* Ocupa todo el ancho superior en flex */
+    padding: 40px 36px;
+    border-radius: 14px;
+    width: 100%;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+.hero-panel::before {
+    content: "FITLIFE";
+    position: absolute;
+    right: -10px;
+    top: -30px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 7rem;
+    color: rgba(255, 255, 255, 0.03);
+    letter-spacing: 4px;
+    pointer-events: none;
 }
 .hero-panel h1 {
-    font-size: 2rem;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     margin-bottom: 10px;
 }
 .hero-panel .accent {
-    color: #63b3ed;
+    color: var(--lime);
+}
+.hero-panel p {
+    color: var(--text-muted);
+    max-width: 520px;
+    font-size: 0.98rem;
 }
 .status-badge {
-    display: inline-block;
-    background-color: #ecc94b;
-    color: #744210;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(198, 255, 58, 0.12);
+    color: var(--lime);
+    border: 1px solid rgba(198, 255, 58, 0.35);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 18px;
 }
+.status-badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--lime);
+    box-shadow: 0 0 8px var(--lime);
+}
+
+/* --- Paneles compartidos --- */
 .form-panel, .result-panel {
-    background-color: var(--bg-card);
-    padding: 30px;
-    border-radius: 8px;
+    background-color: var(--panel);
+    padding: 32px;
+    border-radius: 14px;
     border: 1px solid var(--border);
-    /* REQUISITO 2B (RESUELTO): comparten el espacio equitativamente en
-       escritorio (flex-grow: 1) con una base de 450px, y bajan a 100%
-       de ancho en móvil gracias a flex-wrap en el contenedor padre. */
     flex: 1 1 450px;
 }
+
 h2 {
-    color: var(--primary);
-    margin-bottom: 20px;
-    font-size: 1.4rem;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-main);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
     border-bottom: 2px solid var(--border);
-    padding-bottom: 8px;
+    position: relative;
 }
+h2::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--lime);
+}
+
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 label {
     display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
 }
 select {
     width: 100%;
-    padding: 10px;
+    padding: 12px 14px;
     border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: #fff;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: var(--panel-raised);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: border-color 0.15s;
 }
+select:focus {
+    outline: none;
+    border-color: var(--lime);
+}
+
 .radio-group, .checkbox-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 .radio-group label, .checkbox-group label {
-    font-weight: normal;
+    font-weight: 500;
+    font-size: 0.92rem;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--text-main);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
+    padding: 10px 14px;
+    background-color: var(--panel-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 0.15s, background-color 0.15s;
 }
+.radio-group label:hover, .checkbox-group label:hover {
+    border-color: var(--lime-dim);
+}
+input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--lime);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
 button {
     width: 100%;
-    background-color: var(--accent);
-    color: white;
-    padding: 12px;
+    background-color: var(--lime);
+    color: var(--ink);
+    padding: 15px;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 8px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: transform 0.12s ease, background-color 0.15s;
+    margin-top: 4px;
 }
 button:hover {
-    background-color: var(--accent-hover);
+    background-color: #d8ff6e;
+    transform: translateY(-1px);
 }
-/* Estilos de la tarjeta de resultados */
+button:active {
+    transform: translateY(0);
+}
+
+/* --- Tarjeta de resultados --- */
 .result-card {
-    background-color: #edf2f7;
-    padding: 20px;
-    border-radius: 6px;
-    margin-bottom: 15px;
+    background-color: var(--panel-raised);
+    padding: 22px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
 }
 .result-card p {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
+    align-items: baseline;
+    margin-bottom: 14px;
+    font-size: 0.92rem;
+}
+.result-card p strong {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+}
+.result-card p span {
+    font-weight: 700;
+    color: var(--text-main);
 }
 hr {
     border: 0;
-    border-top: 1px solid var(--border);
-    margin: 15px 0;
+    border-top: 1px dashed var(--border);
+    margin: 16px 0;
 }
 .total-payable {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #2b6cb0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
+.total-payable #res-total {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.6rem;
+    color: var(--lime);
+    letter-spacing: 0;
+}
+
 .instructions-note {
     color: var(--text-muted);
     text-align: center;
+    font-size: 0.8rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    .hero-panel h1 {
+        font-size: 1.8rem;
+    }
+    .hero-panel::before {
+        font-size: 4rem;
+    }
+    .form-panel, .result-panel {
+        padding: 24px;
+    }
 }
