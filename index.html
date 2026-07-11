@@ -4,77 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitLife Premium - Cotizador de Membresías</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main-container">
+
         <!-- Panel de Control e Introducción -->
         <header class="hero-panel">
-            <h1>FitLife <span class="accent">Premium</span></h1>
-            <p>Panel de Configuración y Cotización de Planes de Entrenamiento Universitarios.</p>
-            <div class="status-badge">Estado del Sistema: Evaluando</div>
+            <div class="hero-texture" aria-hidden="true"></div>
+            <div class="hero-tag">GAFETE DE MIEMBRO · FL-2026</div>
+            <h1>FITLIFE <span class="accent">PREMIUM</span></h1>
+            <p>Configura tu plan de entrenamiento universitario y mira el total actualizarse en tiempo real.</p>
+            <div class="status-badge">
+                <span class="status-dot" aria-hidden="true"></span>
+                Estado del sistema: evaluando
+            </div>
         </header>
+
         <!-- Formulario de Configuración -->
         <main class="form-panel">
-            <h2>Configurador de Plan</h2>
+            <h2><span class="eyebrow">Configurador</span>Arma tu plan</h2>
             <form id="form-cotizador">
-                
+
                 <!-- REQUISITO 1A: Tipos de Membresía -->
                 <div class="form-group">
-                    <label for="tipo-membresia">Tipo de Membresía:</label>
+                    <label for="tipo-membresia"><span class="step-num">01</span>Tipo de membresía</label>
                     <select id="tipo-membresia" required>
-                        <option value="basico">Plan Básico ($30 USD/mes) - Solo Gym</option>
-                        <option value="estudiante">Estudiante Universitario ($25 USD/mes)</option>
-                        <option value="premium">Plan Premium Total ($50 USD/mes)</option>
+                        <option value="basico">Plan Básico — $30 USD/mes · Solo Gym</option>
+                        <option value="estudiante">Estudiante Universitario — $25 USD/mes</option>
+                        <option value="premium">Plan Premium Total — $50 USD/mes</option>
                     </select>
                 </div>
+
                 <!-- REQUISITO 1B: Período de Tiempo -->
                 <div class="form-group">
-                    <label>Período de Contratación:</label>
-                    <div class="radio-group">
-                        <label>
-                            <input type="radio" name="periodo" value="1" checked> 1 Mes (Precio base)
+                    <label><span class="step-num">02</span>Período de contratación</label>
+                    <div class="chip-group" role="radiogroup">
+                        <label class="chip">
+                            <input type="radio" name="periodo" value="1" checked>
+                            <span class="chip-main">1 mes</span>
+                            <span class="chip-sub">Precio base</span>
                         </label>
-                        <label>
-                            <input type="radio" name="periodo" value="6"> 6 Meses (10% descuento total)
+                        <label class="chip">
+                            <input type="radio" name="periodo" value="6">
+                            <span class="chip-main">6 meses</span>
+                            <span class="chip-sub">−10% descuento</span>
                         </label>
-                        <label>
-                            <input type="radio" name="periodo" value="12"> 12 Meses (20% descuento total)
+                        <label class="chip">
+                            <input type="radio" name="periodo" value="12">
+                            <span class="chip-main">12 meses</span>
+                            <span class="chip-sub">−20% descuento</span>
                         </label>
                     </div>
                 </div>
+
                 <!-- REQUISITO 1C: Servicios Adicionales -->
                 <div class="form-group">
-                    <label>Servicios Adicionales:</label>
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" name="adicional" value="casillero"> Casillero Inteligente (+$5 USD)
+                    <label><span class="step-num">03</span>Servicios adicionales</label>
+                    <div class="chip-group chip-group--check">
+                        <label class="chip">
+                            <input type="checkbox" name="adicional" value="casillero">
+                            <span class="chip-main">Casillero inteligente</span>
+                            <span class="chip-sub">+$5 USD</span>
                         </label>
-                        <label>
-                            <input type="checkbox" name="adicional" value="nutricion"> Asesoría Nutricional mensual (+$15 USD)
+                        <label class="chip">
+                            <input type="checkbox" name="adicional" value="nutricion">
+                            <span class="chip-main">Asesoría nutricional</span>
+                            <span class="chip-sub">+$15 USD</span>
                         </label>
-                        <label>
-                            <input type="checkbox" name="adicional" value="piscina"> Acceso a la Piscina Olímpica (+$10 USD)
+                        <label class="chip">
+                            <input type="checkbox" name="adicional" value="piscina">
+                            <span class="chip-main">Piscina olímpica</span>
+                            <span class="chip-sub">+$10 USD</span>
                         </label>
                     </div>
                 </div>
-                <button type="button" id="btn-calcular">Calcular Total Mensual</button>
+
+                <button type="button" id="btn-calcular">Calcular total mensual</button>
             </form>
         </main>
+
         <!-- Panel de Resultados -->
         <aside class="result-panel">
-            <h2>Resumen de Cotización</h2>
+            <div class="scoreboard-texture" aria-hidden="true"></div>
+            <h2 class="result-title"><span class="eyebrow eyebrow--dark">Resumen</span>Tu cotización</h2>
+
             <div class="result-card">
-                <p><strong>Costo Base Mensual:</strong> <span id="res-base">$0.00</span></p>
-                <p><strong>Cargos Adicionales:</strong> <span id="res-adicionales">$0.00</span></p>
-                <p><strong>Descuento por Período:</strong> <span id="res-descuento">0%</span></p>
-                <hr>
-                <p class="total-payable">Total Final Estimado: <span id="res-total">$0.00</span></p>
+                <div class="result-row">
+                    <span class="result-label">Costo base mensual</span>
+                    <span class="result-value" id="res-base">$0.00</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Cargos adicionales</span>
+                    <span class="result-value" id="res-adicionales">$0.00</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Descuento por período</span>
+                    <span class="result-value result-value--discount" id="res-descuento">0%</span>
+                </div>
+
+                <div class="scoreboard">
+                    <span class="scoreboard-label">Total final estimado</span>
+                    <span class="scoreboard-total" id="res-total">$0.00</span>
+                </div>
             </div>
+
             <div class="instructions-note">
-                <p><small>*Los precios no incluyen IVA y están sujetos a verificación de estatus estudiantil.</small></p>
+                <p>Los precios no incluyen IVA y están sujetos a verificación de estatus estudiantil.</p>
             </div>
         </aside>
+
     </div>
     <script src="script.js"></script>
 </body>
