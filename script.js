@@ -4,15 +4,15 @@
 document.getElementById('btn-calcular').addEventListener('click', function() {
 
     // --- REQUISITO 3A: CAPTURA DE INPUTS (RESUELTO) ---
-    const selectMembresia = document.getElementById('tipo-membresia');
-    const tipoMembresia = selectMembresia.value;
+    var selectMembresia = document.getElementById('tipo-membresia');
+    var tipoMembresia = selectMembresia.value;
 
     // Se usa :checked para tomar únicamente el radio button activo del grupo "periodo"
-    const periodoSeleccionado = document.querySelector('input[name="periodo"]:checked');
-    const mesesContratacion = parseInt(periodoSeleccionado.value);
+    var periodoSeleccionado = document.querySelector('input[name="periodo"]:checked');
+    var mesesContratacion = parseInt(periodoSeleccionado.value);
 
     // --- REQUISITO 3B: ESTRUCTURA CONDICIONAL LOGICIAL (RESUELTO) ---
-    let costoBaseMensual = 0;
+    var costoBaseMensual = 0;
     if (tipoMembresia === 'basico') {
         costoBaseMensual = 30;
     } else if (tipoMembresia === 'estudiante') {
@@ -22,8 +22,8 @@ document.getElementById('btn-calcular').addEventListener('click', function() {
     }
 
     // --- REQUISITO 3C: OPERACIONES Y CICLOS/MÉTODOS ADICIONALES (RESUELTO) ---
-    let cargosAdicionales = 0;
-    const checkboxesAdicionales = document.querySelectorAll('input[name="adicional"]:checked');
+    var cargosAdicionales = 0;
+    var checkboxesAdicionales = document.querySelectorAll('input[name="adicional"]:checked');
 
     checkboxesAdicionales.forEach(function(checkbox) {
         if (checkbox.value === 'casillero') {
@@ -36,7 +36,7 @@ document.getElementById('btn-calcular').addEventListener('click', function() {
     });
 
     // --- REQUISITO 3D: CÁLCULO DE DESCUENTOS POR PERÍODO (RESUELTO) ---
-    let porcentajeDescuento = 0;
+    var porcentajeDescuento = 0;
     if (mesesContratacion === 6) {
         porcentajeDescuento = 0.10; // 10% descuento
     } else if (mesesContratacion === 12) {
@@ -45,10 +45,10 @@ document.getElementById('btn-calcular').addEventListener('click', function() {
 
     // --- OPERACIONES MATEMÁTICAS ---
     // Cálculo final: (Costo Base + Cargos Adicionales) * Meses, aplicándole el descuento correspondiente.
-    const subtotalMensual = costoBaseMensual + cargosAdicionales;
-    const totalSinDescuento = subtotalMensual * mesesContratacion;
-    const montoDescuento = totalSinDescuento * porcentajeDescuento;
-    const totalFinalCalculado = totalSinDescuento - montoDescuento;
+    var subtotalMensual = costoBaseMensual + cargosAdicionales;
+    var totalSinDescuento = subtotalMensual * mesesContratacion;
+    var montoDescuento = totalSinDescuento * porcentajeDescuento;
+    var totalFinalCalculado = totalSinDescuento - montoDescuento;
 
     // --- REQUISITO 3E: IMPRESIÓN Y MANIPULACIÓN DEL DOM (RESUELTO) ---
     document.getElementById('res-base').innerText = `$${costoBaseMensual.toFixed(2)} USD/mes`;
