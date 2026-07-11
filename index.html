@@ -14,7 +14,6 @@
             <p>Panel de Configuración y Cotización de Planes de Entrenamiento Universitarios.</p>
             <div class="status-badge">Estado del Sistema: Evaluando</div>
         </header>
-
         <!-- Formulario de Configuración -->
         <main class="form-panel">
             <h2>Configurador de Plan</h2>
@@ -25,10 +24,10 @@
                     <label for="tipo-membresia">Tipo de Membresía:</label>
                     <select id="tipo-membresia" required>
                         <option value="basico">Plan Básico ($30 USD/mes) - Solo Gym</option>
-                        <!-- ERROR/INCOMPLETO: Faltan las opciones "estudiante" ($25 USD/mes) y "premium" ($50 USD/mes) -->
+                        <option value="estudiante">Estudiante Universitario ($25 USD/mes)</option>
+                        <option value="premium">Plan Premium Total ($50 USD/mes)</option>
                     </select>
                 </div>
-
                 <!-- REQUISITO 1B: Período de Tiempo -->
                 <div class="form-group">
                     <label>Período de Contratación:</label>
@@ -39,10 +38,11 @@
                         <label>
                             <input type="radio" name="periodo" value="6"> 6 Meses (10% descuento total)
                         </label>
-                        <!-- ERROR/INCOMPLETO: Falta la opción de 12 Meses (20% descuento total) -->
+                        <label>
+                            <input type="radio" name="periodo" value="12"> 12 Meses (20% descuento total)
+                        </label>
                     </div>
                 </div>
-
                 <!-- REQUISITO 1C: Servicios Adicionales -->
                 <div class="form-group">
                     <label>Servicios Adicionales:</label>
@@ -53,14 +53,14 @@
                         <label>
                             <input type="checkbox" name="adicional" value="nutricion"> Asesoría Nutricional mensual (+$15 USD)
                         </label>
-                        <!-- ERROR/INCOMPLETO: Falta el servicio de "Acceso a la Piscina Olímpica" (+$10 USD) -->
+                        <label>
+                            <input type="checkbox" name="adicional" value="piscina"> Acceso a la Piscina Olímpica (+$10 USD)
+                        </label>
                     </div>
                 </div>
-
                 <button type="button" id="btn-calcular">Calcular Total Mensual</button>
             </form>
         </main>
-
         <!-- Panel de Resultados -->
         <aside class="result-panel">
             <h2>Resumen de Cotización</h2>
